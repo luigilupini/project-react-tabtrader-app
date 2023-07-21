@@ -7,15 +7,15 @@ import dotenv from 'dotenv';
 import helmet from 'helmet';
 import morgan from 'morgan';
 
-/* IMPORTING ROUTES */
-import kpiRoutes from './routes/kpi.js';
-import productRoutes from './routes/product.js';
-import transactionRoutes from './routes/transaction.js';
-
 /* IMPORTING MODELS */
 import KPI from './models/KPI.js';
 import Product from './models/Product.js';
 import Transaction from './models/Transaction.js';
+
+/* IMPORTING ROUTES */
+import kpiRoutes from './routes/kpi.js';
+import productRoutes from './routes/product.js';
+import transactionRoutes from './routes/transaction.js';
 
 /* IMPORTING DATA  */
 import { kpis, products, transactions } from './data/data.js';
@@ -85,12 +85,15 @@ mongoose
   .then(async () => {
     app.listen(PORT, () => console.log(`Express Server Port: ${PORT}`)); // Starting the server
 
-    // ! ADD DATA ONE TIME ONLY OR AS NEEDED
+    // ! ADD DATA ONE TIME ONLY OR AS NEEDED HERE
+    /*
     // 1) Drops current database before we seed it 🌱 (avoid duplicates)
-    // await mongoose.connection.db.dropDatabase();
+    await mongoose.connection.db.dropDatabase();
     // 2) Inserts data into database following the schema model/structure 🏗️
-    // KPI.insertMany(kpis);
-    // Product.insertMany(products);
-    // Transaction.insertMany(transactions);
+    KPI.insertMany(kpis);
+    Product.insertMany(products);
+    Transaction.insertMany(transactions);
+    console.log('Database seeded 🌱 successfully');
+    */
   })
   .catch((error) => console.log(`${error} did not connect`)); // Logs any connection errors

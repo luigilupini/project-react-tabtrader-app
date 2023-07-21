@@ -51,7 +51,7 @@ const areaSmall = `
 `;
 
 export default function Dashboard() {
-  const isAboveMediumScreens = useMediaQuery('(min-width: 1200px)');
+  const isAboveMediumScreens = useMediaQuery('(min-width: 1290px)');
   return (
     <Box
       width='100%'
@@ -71,9 +71,13 @@ export default function Dashboard() {
               gridTemplateAreas: areaSmall,
             }
       }
+      pb={1}
     >
+      {/* KPI INDICATOR ROW */}
       <Row1 />
+      {/* PRODUCTS ROW */}
       <Row2 />
+      {/* TRANSACTIONS ROW */}
       <Row3 />
     </Box>
   );

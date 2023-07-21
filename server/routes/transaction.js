@@ -16,6 +16,8 @@ const router = express.Router();
 router.get('/transactions', async (req, res) => {
   try {
     const transactions = await Transaction.find()
+      // This line limits the number of documents returned to 50
+      // and sorts them by createdOn property in desc order.
       .limit(50)
       .sort({ createdOn: -1 });
     // If the database query is successful, this line sends a response to the

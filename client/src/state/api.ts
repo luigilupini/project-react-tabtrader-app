@@ -8,6 +8,7 @@ import {
   GetTransactionsResponse,
 } from '@/state/types';
 
+/* CREATE API USING REDUX TOOLKIT QUERY */
 // Using createApi to define a set of endpoints for our API
 // This is where we specify how to interact with our backend
 export const api = createApi({
@@ -19,8 +20,9 @@ export const api = createApi({
   // A name of the reducer and the slice of the Redux store that this API will interact with
   reducerPath: 'main',
 
-  // Important: The types of tags that this API will use. Tags are used to
-  // invalidate, refetch, or otherwise react to actions in the Redux store
+  // Important: The types of tags are the names this API will to save within the
+  // store. Tags invalidate, refetch, and react to actions in the Redux store. We
+  // define tags here and additionally specify which endpoints they belong toward.
   tagTypes: ['Kpis', 'Products', 'Transactions'],
 
   // Defining the endpoints for our API
@@ -48,9 +50,10 @@ export const api = createApi({
   }),
 });
 
-// Exporting hooks that allow us to make these API calls in our components
-// The names of these hooks are automatically generated based on the names of our endpoints
-// After defining the API using createApi, we can integrate it with the Redux store!
+/* EXPORTING HOOKS TO MAKE API CALLS */
+// Hooks that allow us to make these API calls in our components The names of
+// these hooks are automatically generated based on the names of our endpoints
+// After defining the API using createApi, we integrate it with the Redux store!
 export const { useGetKpisQuery, useGetProductsQuery, useGetTransactionsQuery } =
   api;
 
